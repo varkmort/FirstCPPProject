@@ -11,8 +11,8 @@ struct Point2D {
     double y;
 
     bool IsEqual(const Point2D& B, const double eps= 0.01) {
-        double dX = x - B.x;
-        double dY = y - B.y;
+        double dX = ::abs(x - B.x);
+        double dY = ::abs(y - B.y);
         return dX <= eps && dY <= eps;
     }
 };
@@ -22,12 +22,11 @@ struct Segment {
     Point2D B;
 
     double Length() {
-
+        
     }
     //написать встроенные функции нахождения длинны отрезков
     // и сравнения отрезков на равенство, больше, меньше
     // с определённой точностью
-
     bool IsEqual();
 };
 
@@ -50,5 +49,5 @@ int main()
     Segment AB{ {0.5, 1.}, {2.9, 8.} };
 
     auto answer = IsEqual(One, Two, 0.0001);
-    auto answer = One.IsEqual(Two, 0.02);
+    answer = One.IsEqual(Two, 0.02);
 }

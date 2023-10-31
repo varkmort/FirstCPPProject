@@ -22,11 +22,11 @@ As any she belied with false compare.)" };
 
 int Length(const char* str) {
 	int length{};
-	//while (str[length] != '\0') {
-	//	length += 1;
-	//}
-	while (str[length++]);
-	return --length;
+	while (str[length] != '\0') {
+		length += 1;
+	}
+	//while (str[length++]);
+	return length;
 }
 
 int Words(const char* str) {
@@ -68,8 +68,10 @@ int Find(const char* str, const char* fnd) {
 }
 
 int main(){
-	const char strTest[] = "qe fer ert er ey";
+	const char strTest[] = "qw\tter ers\ner ty";
 	const char src[] = "er";
+	const char strTes_[]{ 'q','w','e','r','t','y'};
+	
 	std::cout << strTest << "\nLength: ";
 	std::cout << Length(strTest) << '\n';
 	std::cout << "Words: " << Words(strTest) << '\n';
