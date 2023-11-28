@@ -1,46 +1,59 @@
 #include <iostream>
-#include <set>
 
-#include <string>
-#include <Windows.h>
+#define LENGTH 20
 
-#ifdef WIN32
+#define MAX(A, B) (A<B)?B:A
 
-#include <clocale>
+#define DOUBLE_FUNC
 
-#else
+const int g_length{ 10 };
 
-#include <posix>
 
-#endif // WIN32
+#ifdef INT_FUBC
 
-#ifdef _HAS_CXX20
-
-#endif // _HAS_CXX20
-
-int summ(int a, int b) {
-    return a + b;
+int Gen() {
+	return ::rand() % 101;
 }
+#endif // INT_FUBC
 
-float summ(float a, float b) {
-    return a + b;
+#ifdef DOUBLE_FUNC 
+double Gen() {
+	return (::rand() % 100) + 1. / (::rand()%100+1);
 }
+#endif 
+
+
+#ifdef HAS_CXX20
+double Gen();
+#endif // HAS_CXX20
+
 
 #include "Phisics.hpp"
-#include "Examples.hpp"
 
 int main()
 {
-#ifdef WIN32
-    ::SetConsoleCP(CP_UTF8);
-    ::SetConsoleOutputCP(CP_UTF8);
-    ::setlocale(LC_ALL, "RUS");
-#endif // WIN32
-    Ex();
-    std::wstring str;
-    str = L"Влад молодец";
+#ifdef DEBUG
+	::srand(123u);
+#else
+	::srand(::time(NULL));
+#endif // RELEASE
 
-    std::wcout << Velocity(1.,5.) << EnergyFull(123);
+	double arr[LENGTH]{};
+	for (auto& i : arr)
+	{
+		i = Gen();
+		EnergyFull(i);
+	}
+	for (auto& i : arr)
+	{
+		std::cout << i << ' ';
+	}
+	std::cout << '\n';
+	for (int i = 0; i < std::size(arr); i++)
+	{
+		std::cout << "i - try: " << arr[i]<< " max " <<
+			std::max(arr[i], double(Gen())) << '\n';
+	}
 
-    return 0;
+	return 0;
 }

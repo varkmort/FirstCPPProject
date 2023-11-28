@@ -3,7 +3,8 @@
 #ifndef PHISICS_HPP
 #define PHISICS_HPP
 
-extern const double c;
+extern const double c;// объ€влени€ глобальных пременных раздел€ютс€ с определен€ми
+// это пример объ€влени€
 
 double Velocity(double a, double t);
 
@@ -16,6 +17,6 @@ template <typename Type>
 Type ContertTime(double t)
 {
 	return Type(t);
-}
+}// шаблоны всегда живут в заголовочном файле
 
 #endif //PHISICS_HPP
