@@ -37,7 +37,7 @@ enum PhoneCode {
 	Canada = 1,
 	Chad = 2,
 	NorthKorea,
-	Mongolia,
+	Mongolia=897,
 	KiriBati,
 	NewZealand,
 	RUS = 7
